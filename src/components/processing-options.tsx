@@ -31,9 +31,11 @@ export function ProcessingOptions({ onChange }: ProcessingOptionsProps) {
   };
 
   return (
-    <Card>
+    <Card className="border-2 border-accent/30">
       <CardHeader>
-        <CardTitle>Processing Options</CardTitle>
+        <CardTitle className="flex items-center">
+          Processing Options
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -83,12 +85,15 @@ function OptionButton({
   return (
     <Button
       variant={active ? "default" : "outline"}
-      className="h-auto justify-start p-4 w-full"
+      className={`h-auto justify-start p-4 w-full transition-all duration-300 ${active ? 'shadow-md' : ''}`}
       onClick={onClick}
     >
       <div className="flex flex-col items-start">
-        <span className="font-medium">{label}</span>
-        <span className="text-xs text-muted-foreground">{description}</span>
+        <span className="font-medium flex items-center">
+          {active && <span className="mr-2 text-xs">✓</span>}
+          {label}
+        </span>
+        <span className={`text-xs ${active ? 'text-primary-foreground' : 'text-muted-foreground'}`}>{description}</span>
       </div>
     </Button>
   );

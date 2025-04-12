@@ -15,12 +15,14 @@ interface ProcessingStatusProps {
 
 export function ProcessingStatus({ jobId, steps, error }: ProcessingStatusProps) {
   return (
-    <Card>
+    <Card className="border-2 border-secondary/30 overflow-hidden">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          Processing Status
+          <span className="flex items-center">
+            <span className="mr-2">🍽️</span> Gobbling Status
+          </span>
           {jobId && (
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">
               Job ID: {jobId}
             </span>
           )}
@@ -66,8 +68,8 @@ function StatusIcon({ status }: { status: ProcessingStep["status"] }) {
       const randomMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
       return (
         <div className="flex items-center">
-          <div className="h-6 w-6 rounded-full border-2 border-blue-500 border-t-transparent animate-spin mr-2" />
-          <div className="text-xs text-blue-500 animate-pulse">{randomMessage}...</div>
+          <div className="h-6 w-6 rounded-full border-2 border-primary border-t-transparent animate-spin mr-2" />
+          <div className="text-xs text-primary animate-pulse">{randomMessage}...</div>
         </div>
       );
     case "completed":

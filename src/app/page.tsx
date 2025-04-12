@@ -214,18 +214,21 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div className="container mx-auto py-8 px-4 min-h-screen bg-gradient-to-b from-background to-card">
       <div className="space-y-8">
-        <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold">Git Gobbler</h1>
-          <p className="text-lg text-muted-foreground">
-            Process GitHub repositories into LLM-optimized XML
+        <div className="text-center space-y-3">
+          <h1 className="text-5xl font-bold text-primary animate-float inline-block">
+            Git Gobbler
+          </h1>
+          <p className="text-xl text-muted-foreground">
+            Devouring repositories, optimizing code for LLM consumption
           </p>
+          <div className="w-24 h-1 bg-secondary mx-auto rounded-full my-4"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Input Methods */}
-          <Card>
+          <Card className="border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300">
             <CardHeader>
               <CardTitle>GitHub Repository</CardTitle>
               <CardDescription>
@@ -233,25 +236,20 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <GithubUrlInput 
-                onSubmit={handleGithubUrlSubmit} 
+              <GithubUrlInput
+                onSubmit={handleGithubUrlSubmit}
                 isLoading={isLoading}
               />
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300">
             <CardHeader>
               <CardTitle>Upload Archive</CardTitle>
-              <CardDescription>
-                Upload a .zip or .tar.gz file
-              </CardDescription>
+              <CardDescription>Upload a .zip or .tar.gz file</CardDescription>
             </CardHeader>
             <CardContent>
-              <FileUpload 
-                onUpload={handleFileUpload} 
-                isLoading={isLoading}
-              />
+              <FileUpload onUpload={handleFileUpload} isLoading={isLoading} />
             </CardContent>
           </Card>
         </div>
@@ -259,16 +257,14 @@ export default function Home() {
         <ProcessingOptions onChange={setProcessingOptions} />
 
         {jobId && (
-          <ProcessingStatus 
-            jobId={jobId} 
-            steps={steps} 
-            error={error}
-          />
+          <div className="transform hover:scale-[1.01] transition-transform duration-300">
+            <ProcessingStatus jobId={jobId} steps={steps} error={error} />
+          </div>
         )}
 
         {isComplete && !error && (
-          <DownloadResult 
-            resultInfo={mockResultInfo} 
+          <DownloadResult
+            resultInfo={mockResultInfo}
             onDownload={handleDownload}
           />
         )}

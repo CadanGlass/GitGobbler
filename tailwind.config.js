@@ -15,6 +15,10 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+      mono: ['var(--font-geist-mono)', 'monospace'],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -65,10 +69,20 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        "wiggle": {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+        "float": {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "wiggle": "wiggle 1s ease-in-out infinite", 
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },
