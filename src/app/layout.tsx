@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,6 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}>
+        <header className="container flex items-center justify-between py-4">
+          <div className="flex items-center gap-2">
+            <Image src="/logo.png" alt="Git Gobbler Logo" width={64} height={64} />
+            <span className="text-2xl font-bold">Git Gobbler</span>
+          </div>
+        </header>
         {children}
       </body>
     </html>
