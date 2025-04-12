@@ -62,8 +62,13 @@ function StatusIcon({ status }: { status: ProcessingStep["status"] }) {
         <div className="h-6 w-6 rounded-full border-2 border-gray-300 dark:border-gray-600" />
       );
     case "processing":
+      const loadingMessages = ["Gobbling", "Tasty", "Scrumptious", "Delectable", "Yummy", "Savoring", "Digesting", "Munching"];
+      const randomMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
       return (
-        <div className="h-6 w-6 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />
+        <div className="flex items-center">
+          <div className="h-6 w-6 rounded-full border-2 border-blue-500 border-t-transparent animate-spin mr-2" />
+          <div className="text-xs text-blue-500 animate-pulse">{randomMessage}...</div>
+        </div>
       );
     case "completed":
       return (
